@@ -4,56 +4,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="div-main">
-    <div class="div-search">
-        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-        {
-            <div class="form-group">
-                @Html.TextBoxFor(t => t.SearchModel.SearchText, new { @class = "form-control", placeHolder = "Search keyword", type = "text" })
-            </div>
-            <div class="form-group">
-                @Html.DropDownListFor(d => d.SearchModel.ManufacturerID, Model.ManufacturerModels.Select(s => new SelectListItem() { Text = s.Name, Value = s.ID.ToString() }).OrderBy(o => o.Text), "[All]", new { @class = "custom-select" })
-            </div>
-            <div class="div-prices">
+    <div class="div-main">
+        <div class="div-search">
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
                 <div class="form-group">
-                    @Html.TextBoxFor(t => t.SearchModel.minPrice, new { @class = "form-control", placeHolder = "min price", type = "number", min = 0 })
+                    @Html.TextBoxFor(t => t.SearchModel.SearchText, new { @class = "form-control", placeHolder = "Search keyword", type = "text" })
                 </div>
                 <div class="form-group">
-                    @Html.TextBoxFor(t => t.SearchModel.maxPrice, new { @class = "form-control", placeHolder = "max price", type = "number", min = 1 })
+                    @Html.DropDownListFor(d => d.SearchModel.ManufacturerID, Model.ManufacturerModels.Select(s => new SelectListItem() { Text = s.Name, Value = s.ID.ToString() }).OrderBy(o => o.Text), "[All]", new { @class = "custom-select" })
                 </div>
-            </div>
-            <button type="submit" class="btn btn-info">Search</button>
-        }
-    </div>
-    <div class="div-result">
-        @if (Model.MobileModels.Count > 0)
-        {
-            <table>
-                <tbody>
-                    <tr>
-                        @foreach (var mM in Model.MobileModels.Select((v, i) => new { v, i }))
-                        {
-                            if (mM.i > 0 && mM.i % 3 == 0)
+                <div class="div-prices">
+                    <div class="form-group">
+                        @Html.TextBoxFor(t => t.SearchModel.minPrice, new { @class = "form-control", placeHolder = "Min price", type = "number", min = 0 })
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(t => t.SearchModel.maxPrice, new { @class = "form-control", placeHolder = "Max price", type = "number", min = 1 })
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info">Search</button>
+            }
+        </div>
+        <div class="vr">&nbsp;</div>
+        <div class="div-result">
+            @if (Model.MobileModels.Count > 0)
+            {
+                <table>
+                    <tbody>
+                        <tr>
+                            @foreach (var mM in Model.MobileModels.Select((v, i) => new { v, i }))
                             {
+                                if (mM.i > 0 && mM.i % 3 == 0)
+                                {
                                 @:</tr><tr>
-                            }
-                            <td style="margin: 0 5px;">
-                                <div class="card border-secondary mb-3 mobileBox" onclick="window.location.href='@Url.Action("Details", "Mobile", new { id = mM.v.ID })'">
-                                    <div class="card-body">
-                                        <img src="@mM.v.ImageURL" height="150" />
-                                        <h6>@mM.v.Name</h6>
-                                        <button type="button" class="btn btn-success" style="width: 90%">@mM.v.Price ლარი</button>
+                                }
+                                <td style="margin: 0 5px;">
+                                    <div class="card border-secondary mb-3 mobileBox" onclick="window.location.href='@Url.Action("Details", "Mobile", new { id = mM.v.ID })'">
+                                        <div class="card-body">
+                                            <img src="@mM.v.ImageURL" height="150" />
+                                            <h6>@mM.v.Name</h6>
+                                            <button type="button" class="btn btn-success" style="width: 90%">@mM.v.Price ლარი</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        }
-                    </tr>
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <h3 class="noResult">Nothing Found</h3>
-        }
+                                </td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <h3 class="noResult">Nothing Found</h3>
+            }
+        </div>
     </div>
-</div>

@@ -167,3 +167,10 @@ p.specsText {
 .div-newMain > h2 {
     margin-bottom: 10px;
 }
+
+.vr {
+    background-color: rgba(2, 184, 117, 1);
+    border-radius: 20px;
+    margin: 0 5px;
+    width: 3px;
+}
