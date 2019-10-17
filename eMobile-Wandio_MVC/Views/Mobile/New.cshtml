@@ -1,0 +1,33 @@
+﻿@model NewMobileModel
+@{
+    ViewData["Title"] = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="div-newMain">
+        <h2>New Device</h2>
+        @using (Html.BeginForm("New", "Mobile", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.TextBoxFor(t => t.MobileModel.Name, new { @class = "form-control", placeHolder = "Name", type = "text", required = "" })
+                @Html.TextBoxFor(t => t.MobileModel.Price, new { @class = "form-control", placeHolder = "Price", type = "number", required = "", min = 0 })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(t => t.MobileModel.OS, new { @class = "form-control", placeHolder = "OS", type = "text", required = "" })
+                @Html.TextBoxFor(t => t.MobileModel.Memory, new { @class = "form-control", placeHolder = "Memory", type = "number", required = "", min = 0 })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(t => t.MobileModel.Processor, new { @class = "form-control", placeHolder = "Processor (Optional)", type = "text" })
+                @Html.TextBoxFor(t => t.MobileModel.Size, new { @class = "form-control", placeHolder = "Size in inches (Optional)", type = "number" , step = "0.1"})
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(t => t.MobileModel.Weight, new { @class = "form-control", placeHolder = "Weight in grams (Optional)", type = "number" })
+                @Html.TextBoxFor(t => t.MobileModel.VideoLink, new { @class = "form-control", placeHolder = "Video Link (Optional)", type = "url" })
+            </div>
+            <div class="form-group">
+                @Html.TextBoxFor(t => t.MobileModel.ImageURL, new { @class = "form-control", placeHolder = "Image Link", type = "url", required = "" })
+                @Html.DropDownListFor(d => d.MobileModel.ManufacturerID, Model.ManufacturerModels.Select(s => new SelectListItem() { Text = s.Name, Value = s.ID.ToString() }).OrderBy(o => o.Text), "[Manufacturer]", new { @class = "custom-select", required = "" })
+            </div>
+            <button type="submit" class="btn btn-success">Add</button>
+        }
+    </div>

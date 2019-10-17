@@ -16,13 +16,22 @@
             <p class="specsText">Price: <strong>@Model.Price ლარი</strong></p>
             <p class="specsText">OS: <strong>@Model.OS</strong></p>
             <p class="specsText">Memory: <strong>@Model.Memory Gb</strong></p>
-            <p class="specsText">Processor: <strong>@Model.Processor</strong></p>
-            <p class="specsText">Size: <strong>@Model.Size</strong></p>
-            <p class="specsText">Weight: <strong>@Model.Weight</strong></p>
-            @*@if (Model.VideoLink != null)
+            @if (!string.IsNullOrWhiteSpace(Model.Processor))
             {
-                <p class="specsText">Video: <strong><a>@Model.VideoLink</a></strong></p>
-            }*@
+                <p class="specsText">Processor: <strong>@Model.Processor</strong></p>
+            }
+            @if (Model.Size != 0)
+            {
+                <p class="specsText">Size: <strong>@Model.Size inches</strong></p>
+            }
+            @if (Model.Weight != 0)
+            {
+                <p class="specsText">Weight: <strong>@Model.Weight grams</strong></p>
+            }
+            @if (Model.VideoLink != null)
+            {
+                <p class="specsText">Video: <strong>@Model.VideoLink</strong></p>
+            }
         </div>
     </div>
 </div>

@@ -9,7 +9,7 @@ using Repository;
 namespace Repository.Migrations
 {
     [DbContext(typeof(eMobileDbContext))]
-    [Migration("20191017092731_Init")]
+    [Migration("20191017101117_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,11 +67,14 @@ namespace Repository.Migrations
                     b.Property<string>("Processor")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Size")
+                    b.Property<float>("Size")
+                        .HasColumnType("real");
+
+                    b.Property<string>("VideoLink")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Weight")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("Weight")
+                        .HasColumnType("real");
 
                     b.HasKey("ID");
 

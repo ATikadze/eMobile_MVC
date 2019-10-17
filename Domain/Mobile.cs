@@ -18,8 +18,9 @@ namespace Domain
         [Required]
         public int Memory { get; set; }
         public string Processor { get; set; } = "[Unknown]";
-        public string Size { get; set; } = "[Unknown]";
-        public string Weight { get; set; } = "[Unknown]";
+        public float Size { get; set; }
+        public float Weight { get; set; }
+        public string VideoLink { get; set; }
         [Required]
         public string ImageURL { get; set; }
         [Required]

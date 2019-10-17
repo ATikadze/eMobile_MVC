@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace eMobile_Wandio_MVC.Controllers
 {
     using Domain.ServiceInterfaces;
+    using Domain;
     using Models;
     public class MobileController : Controller
     {
@@ -22,6 +23,24 @@ namespace eMobile_Wandio_MVC.Controllers
         public IActionResult Details(int id)
         {
             return View((MobileModel)_mobileService.Set().Single(s => s.ID == id));
+        }
+
+        [HttpGet]
+        public IActionResult New()
+        {
+            NewMobileModel newMobileModel = new NewMobileModel()
+            {
+                ManufacturerModels = _manufacturerService.Set().Select(s => (ManufacturerModel)s).ToList()
+            };
+            return View(newMobileModel);
+        }
+
+        [HttpPost]
+        public IActionResult New(MobileModel mobileModel)
+        {
+            _mobileService.Save((Mobile)mobileModel);
+            _mobileService.Commit();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

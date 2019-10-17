@@ -73,7 +73,8 @@ namespace eMobile_Wandio_MVC.Controllers
                     ManufacturerID = _manufacturerService.Set().Single(s => s.Name == "Apple").ID,
                     OS = "iOS",
                     Processor = "Smth",
-                    Memory = 32
+                    Memory = 32,
+                    VideoLink = "https://www.youtube.com/watch?v=61TAqY03xwk"
                 });
                 _mobileService.Commit();
             }

@@ -144,3 +144,26 @@ h3.noResult {
 p.specsText {
     font-family: 'Trebuchet MS';
 }
+
+.div-newMain {
+    text-align: center;
+    margin: 5px auto;
+    margin-top: 5px;
+    max-width: 80%;
+}
+
+    .div-newMain > form > div {
+        display: flex;
+        flex-direction: row;
+        margin: 3px auto;
+        width: 70%;
+    }
+
+    .div-newMain > form > div > input {
+        margin: 0 5px;
+        flex-grow: 1;
+    }
+
+.div-newMain > h2 {
+    margin-bottom: 10px;
+}

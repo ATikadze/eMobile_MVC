@@ -13,7 +13,12 @@
     </header>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="@Url.Action("Index", "Home")">eMobile</a>
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">eMobile</a> 
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("New", "Mobile")">Add Device</a>
+                </li>
+            </ul>
         </nav>
         <main role="main" class="pb-3">
             @RenderBody()
