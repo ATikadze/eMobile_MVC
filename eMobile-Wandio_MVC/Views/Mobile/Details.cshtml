@@ -1,0 +1,28 @@
+﻿@model MobileModel
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="div-mainDetails">
+    <div class="div-pictures">
+        <img src="@Model.ImageURL" />
+    </div>
+    <div class="div-specs">
+        <div class="card-body" style="text-align: left">
+            <h4 class="card-title">@Model.Name</h4>
+            <br />
+            <p class="specsText">Name: <strong>@Model.Name</strong></p>
+            <p class="specsText">Price: <strong>@Model.Price ლარი</strong></p>
+            <p class="specsText">OS: <strong>@Model.OS</strong></p>
+            <p class="specsText">Memory: <strong>@Model.Memory Gb</strong></p>
+            <p class="specsText">Processor: <strong>@Model.Processor</strong></p>
+            <p class="specsText">Size: <strong>@Model.Size</strong></p>
+            <p class="specsText">Weight: <strong>@Model.Weight</strong></p>
+            @*@if (Model.VideoLink != null)
+            {
+                <p class="specsText">Video: <strong><a>@Model.VideoLink</a></strong></p>
+            }*@
+        </div>
+    </div>
+</div>
